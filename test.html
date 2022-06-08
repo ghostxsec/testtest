@@ -17,7 +17,7 @@ function cors() {
       document.getElementById("demo").innerHTML = alert(this.responseText);
     }
   };
-  xhttp.open("GET", "https://itunes.apple.com/ca/app/apple-store/id375380948?pt=2003&ct=footer&mt=8", true);
+  xhttp.open("GET", "https://itunes.apple.com/WebObjects/MZStoreServices.woa/wa/processRedirectUrl", true);
   xhttp.withCredentials = true;
   xhttp.send();
 }
